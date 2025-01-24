@@ -1,4 +1,4 @@
-name: "Deploy para VPS testes"
+name: "Deploy para VPS testes 2"
 on:
   push:
     branches:
