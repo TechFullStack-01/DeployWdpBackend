@@ -38,6 +38,6 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd /var/lib/docker/containers
-            docker stop 545d662fd5b3
+            docker stop 97bdcf416eab
             docker run -p 8443:8443 -d gregoriodev953/wdp_vendas_deploy
             exit
