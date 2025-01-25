@@ -48,7 +48,7 @@ public class MarcaController {
             @RequestParam("imagens") MultipartFile[] imagens) {
         try {
             service.salvarMarca(marca, imagens);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Marca cadastrado com sucesso!");
+            return ResponseEntity.status(HttpStatus.CREATED).body("Marca2 cadastrado com sucesso!");
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao salvar imagens.");
         }

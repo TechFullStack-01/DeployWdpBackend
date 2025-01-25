@@ -24,7 +24,7 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
           image: gregoriodev953/wdp_vendas_deploy # Não é para colocar a tag :1.0 , :2.0, etc
-          tags: latest
+          tags: 2.0
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -38,5 +38,6 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd /var/lib/docker/containers
-            docker run -p 8443:8443 -d gregoriodev953/wdp_vendas_deploy
+            docker stop 80909ece0c3e
+            docker run -p 8443:8443 -d gregoriodev953/wdp_vendas_deploy:2.0
             exit
