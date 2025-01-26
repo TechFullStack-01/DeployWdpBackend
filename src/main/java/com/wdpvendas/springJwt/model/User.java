@@ -67,7 +67,7 @@ public class User implements UserDetails {
     private List<Endereco> enderecos = new ArrayList<>();
 
     @Enumerated(value = EnumType.STRING)
-    @Column(name = "role", nullable = false)
+    @Column(name = "role", nullable = false, columnDefinition = "VARCHAR(255) DEFAULT 'USER'")
     private Role role = Role.USER;
 
     @Temporal(TemporalType.TIMESTAMP)
