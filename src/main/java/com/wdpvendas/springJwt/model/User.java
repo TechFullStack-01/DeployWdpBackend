@@ -5,6 +5,9 @@ import com.wdpvendas.springJwt.entity.Endereco;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +20,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "user")
+@EntityListeners(AuditingEntityListener.class)
 public class User implements UserDetails {
 
     public List<Endereco> getEnderecos() {
@@ -71,9 +75,13 @@ public class User implements UserDetails {
     private Role role = Role.USER;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    @Column(name = "data_cadastro", updatable = false)
     private Date data_cadastro;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
+    @Column(name = "data_atualizacao")
     private Date dataAtualizacao;
 
     @OneToMany(mappedBy = "user")

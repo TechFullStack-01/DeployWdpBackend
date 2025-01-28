@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/banners")
@@ -73,6 +74,19 @@ public class BannerController {
         } catch (Exception e) {
             e.printStackTrace(); // Log do erro
             return ResponseEntity.status(500).body("Erro inesperado: " + e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletarPorId(@PathVariable(value = "id") Long id) {
+        Optional<Banner> bannerOptional = bannerRepository.findById(id);
+
+        if (bannerOptional.isPresent()) {
+            // Deletar o banner do repositório
+            bannerRepository.deleteById(id);
+            return ResponseEntity.ok().body("Banner deletado com sucesso.");
+        } else {
+            return ResponseEntity.status(404).body("Banner não encontrado com o ID: " + id);
         }
     }
 

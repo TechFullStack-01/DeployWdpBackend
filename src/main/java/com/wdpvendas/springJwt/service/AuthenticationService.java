@@ -15,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -48,11 +49,22 @@ public class AuthenticationService {
         }
 
         User user = new User();
+        user.setAvatar(request.getAvatar());
         user.setNome(request.getNome());
+        user.setSobrenome(request.getSobrenome());
+        user.setGenero(request.getGenero());
         user.setUsername(request.getUsername());
+        user.setData_nasc(request.getData_nasc());
+        user.setCelular(request.getCelular());
+        user.setTel_fixo(request.getTel_fixo());
+        user.setCpf(request.getCpf());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
+        user.setEnderecos(request.getEnderecos());
+
         user.setRole(request.getRole());
+        user.setData_cadastro(request.getData_cadastro());
+        user.setDataAtualizacao(request.getDataAtualizacao());
 
         user = repository.save(user);
 
