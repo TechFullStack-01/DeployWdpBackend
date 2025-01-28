@@ -4,6 +4,7 @@ import com.wdpvendas.springJwt.entity.Tamanho;
 import com.wdpvendas.springJwt.repository.TamanhoRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -16,6 +17,7 @@ public class TamanhoService {
     }
 
     public Tamanho salvar(Tamanho tamanho) {
+
         return tamanhoRepository.save(tamanho);
     }
 

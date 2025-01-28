@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -26,6 +28,8 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody User request
             ) {
+        request.setData_cadastro(new Date());
+        request.setDataAtualizacao(new Date());
         return ResponseEntity.ok(authService.register(request));
     }
 

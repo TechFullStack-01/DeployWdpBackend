@@ -17,6 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +45,8 @@ public class ProdutoService {
     }
 
     public Produto salvarProduto(Produto produto, MultipartFile[] imagens) throws IOException {
+        produto.setDataCriacao(new Date());
+        produto.setDataAtualizacao(new Date());
         List<String> caminhosLinks = new ArrayList<>();
 
         for (MultipartFile imagem : imagens) {
