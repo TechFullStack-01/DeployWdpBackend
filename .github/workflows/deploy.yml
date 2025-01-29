@@ -37,7 +37,5 @@ jobs:
           username: "root"
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd /var/lib/docker/containers
-            docker stop 6d7f952c88a3
             docker run -d -p 8443:8443 --name backend-vendas --mount "type=bind,source=./uploads,target=/uploads" gregoriodev953/wdp_vendas_deploy:6
             exit
