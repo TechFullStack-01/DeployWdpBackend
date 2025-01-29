@@ -35,7 +35,7 @@ public class MarcaService {
     public MarcaService(MarcaRepository repo) {
         this.repo = repo;
         // Define o diretório como "uploads" na raiz do projeto
-        this.uploadDir = Paths.get(System.getProperty("user.dir"), "uploads").toString();
+        this.uploadDir = Paths.get(System.getProperty("user.dir"), "uploads/imagensmarca").toString();
         criarDiretorioUpload();
 
     }
@@ -62,24 +62,10 @@ public class MarcaService {
         Files.write(filePath, imagem.getBytes());
 
         // Retorna o link HTTP para acessar a imagem
-        return serverUrl + "/imagens/" + fileName;
+        return serverUrl + "/" + fileName;
     }
 
-    
 
-    // public Marca inserir(String nome, String categoria, MultipartFile logo) throws IOException {
-    //     String logoFilename = logo.getOriginalFilename();
-    //     Path logoPath = logoDirectory.resolve(logoFilename);
-
-    //     Files.copy(logo.getInputStream(), logoPath);
-
-    //     Marca marca = new Marca();
-    //     marca.setNome(nome);
-    //     marca.setCategoria(categoria);
-    //     marca.setLogoPath(logoPath.toString());
-
-    //     return repo.save(marca);
-    // }
 
     public List<Marca> buscaTodos() {
         return repo.findAll();

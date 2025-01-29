@@ -16,6 +16,7 @@ D:\Descktop\DeployWdpBackend\src\main\java\com\wdpvendas\springJwt\repository\Ba
 D:\Descktop\DeployWdpBackend\src\main\java\com\wdpvendas\springJwt\service\JwtService.java
 D:\Descktop\DeployWdpBackend\src\main\java\com\wdpvendas\springJwt\service\FileStorageService.java
 D:\Descktop\DeployWdpBackend\src\main\java\com\wdpvendas\springJwt\service\UserDetailsServiceImp.java
+D:\Descktop\DeployWdpBackend\src\main\java\com\wdpvendas\springJwt\service\BannerService.java
 D:\Descktop\DeployWdpBackend\src\main\java\com\wdpvendas\springJwt\repository\EnderecoRepository.java
 D:\Descktop\DeployWdpBackend\src\main\java\com\wdpvendas\springJwt\controller\EnderecoController.java
 D:\Descktop\DeployWdpBackend\src\main\java\com\wdpvendas\springJwt\repository\DetalhesProdutoRepository.java

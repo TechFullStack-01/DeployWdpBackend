@@ -43,6 +43,7 @@ com\wdpvendas\springJwt\filter\JwtAuthenticationFilter.class
 com\wdpvendas\springJwt\service\JwtService.class
 com\wdpvendas\springJwt\repository\ProdutoRepository.class
 com\wdpvendas\springJwt\controller\MarcaController.class
+com\wdpvendas\springJwt\service\BannerService.class
 com\wdpvendas\springJwt\controller\UserController.class
 com\wdpvendas\springJwt\repository\DetalhesProdutoRepository.class
 com\wdpvendas\springJwt\repository\ImagemProdutoRepository.class
