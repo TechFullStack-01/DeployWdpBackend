@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -56,6 +57,14 @@ public class BannerService {
         banner.setImagemMobile(baseUrl + mobileFileName);
 
         return bannerRepository.save(banner);
+    }
+
+    public List<Banner> getAllBanners() {
+        return bannerRepository.findAll();
+    }
+
+    public List<Banner> getBannersByCategoria(String categoria) {
+        return bannerRepository.findByCategoriaIgnoreCase(categoria);
     }
 
     public boolean deleteBanner(Long id) {

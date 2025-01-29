@@ -11,5 +11,6 @@ import java.util.List;
 @Repository
 public interface BannerRepository extends JpaRepository<Banner, Long> {
     @Query("select b from Banner b where b.categoria= ?1")
-    List<Banner> findByCategoria(String categoria);
+
+    List<Banner> findByCategoriaIgnoreCase(String categoria);
 }

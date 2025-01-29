@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/banners")
@@ -38,6 +39,16 @@ public class BannerController {
         } catch (IOException e) {
             return ResponseEntity.internalServerError().build();
         }
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Banner>> getAllBanners() {
+        return ResponseEntity.ok(bannerService.getAllBanners());
+    }
+
+    @GetMapping("/categoria/{categoria}")
+    public ResponseEntity<List<Banner>> getBannersByCategoria(@PathVariable String categoria) {
+        return ResponseEntity.ok(bannerService.getBannersByCategoria(categoria));
     }
 
     @DeleteMapping("/{id}")
