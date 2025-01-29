@@ -39,7 +39,7 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
 
         // Define o diretório como "uploads" na raiz do projeto
-        this.uploadDir = Paths.get(System.getProperty("user.dir"), "uploads").toString();
+        this.uploadDir = Paths.get(System.getProperty("user.dir"), "uploads/imagens_produtos").toString();
         criarDiretorioUpload();
 
     }
@@ -68,7 +68,7 @@ public class ProdutoService {
         Files.write(filePath, imagem.getBytes());
 
         // Retorna o link HTTP para acessar a imagem
-        return serverUrl + "/imagens/" + fileName;
+        return serverUrl + "/" + fileName;
     }
 
     private void criarDiretorioUpload() {
