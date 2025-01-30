@@ -42,7 +42,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         String token = authHeader.substring(7);
+        logger.info("Token JWT recebido: " + token); // Log do token JWT
+
         String username = jwtService.extractUsername(token);
+        logger.info("Email extraído do token: " + username); // Log do email extraído
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
@@ -59,6 +62,5 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
         filterChain.doFilter(request, response);
-
     }
 }

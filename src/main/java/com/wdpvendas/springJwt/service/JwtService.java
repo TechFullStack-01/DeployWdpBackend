@@ -26,7 +26,6 @@ public class JwtService {
     @Value("${application.security.jwt.refresh-token-expiration}")
     private long refreshTokenExpire;
 
-
     private final TokenRepository tokenRepository;
 
     public JwtService(TokenRepository tokenRepository) {
@@ -37,27 +36,40 @@ public class JwtService {
         return extractClaim(token, Claims::getSubject);
     }
 
-
     public boolean isValid(String token, UserDetails user) {
         String username = extractUsername(token);
 
+        // Verifica se o token está expirado
+        if (isTokenExpired(token)) {
+            return false;
+        }
+
+        // Verifica se o token foi invalidado (logout)
         boolean validToken = tokenRepository
                 .findByAccessToken(token)
                 .map(t -> !t.isLoggedOut())
                 .orElse(false);
 
-        return (username.equals(user.getUsername())) && !isTokenExpired(token) && validToken;
+        // Verifica se o username do token corresponde ao username do UserDetails
+        return username.equals(user.getUsername()) && validToken;
     }
 
     public boolean isValidRefreshToken(String token, User user) {
         String username = extractUsername(token);
 
+        // Verifica se o token está expirado
+        if (isTokenExpired(token)) {
+            return false;
+        }
+
+        // Verifica se o refresh token foi invalidado (logout)
         boolean validRefreshToken = tokenRepository
                 .findByRefreshToken(token)
                 .map(t -> !t.isLoggedOut())
                 .orElse(false);
 
-        return (username.equals(user.getUsername())) && !isTokenExpired(token) && validRefreshToken;
+        // Verifica se o username do token corresponde ao username do User
+        return username.equals(user.getUsername()) && validRefreshToken;
     }
 
     private boolean isTokenExpired(String token) {
@@ -82,28 +94,25 @@ public class JwtService {
                 .getPayload();
     }
 
-
     public String generateAccessToken(User user) {
         return generateToken(user, accessTokenExpire);
     }
 
     public String generateRefreshToken(User user) {
-        return generateToken(user, refreshTokenExpire );
+        return generateToken(user, refreshTokenExpire);
     }
 
     private String generateToken(User user, long expireTime) {
-        String token = Jwts
+        return Jwts
                 .builder()
                 .subject(user.getUsername())
                 .claim("id", user.getId())        // Adiciona o ID do usuário
                 .claim("role", user.getRole())    // Adiciona o papel do usuário
                 .claim("name", user.getNome())    // Adiciona o nome do usuário
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + expireTime ))
+                .expiration(new Date(System.currentTimeMillis() + expireTime))
                 .signWith(getSigninKey())
                 .compact();
-
-        return token;
     }
 
     private SecretKey getSigninKey() {
