@@ -1,5 +1,6 @@
 package com.wdpvendas.springJwt.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -52,11 +53,20 @@ public class Produto {
     @Column(nullable = false, columnDefinition = "TEXT")
     @Lob
     private String descricao;
-    
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="produto_id")
+    @JsonManagedReference
+    private List<DetalhesProduto> detalhesProduto = new ArrayList<>();
+
+
+    /*
     @ElementCollection
     @CollectionTable(name = "produto_detalhesProduto", joinColumns = @JoinColumn(name = "produto_id"))
     @Column(name = "detalhesProduto")
     private List<DetalhesProduto> detalhesProduto;
+
+     */
     
     
     @ElementCollection
