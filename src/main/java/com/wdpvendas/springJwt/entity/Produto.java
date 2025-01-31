@@ -49,7 +49,7 @@ public class Produto {
     
     private Integer avaliacao;
     
-    // @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false, columnDefinition = "TEXT")
     @Lob
     private String descricao;
     
