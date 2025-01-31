@@ -37,5 +37,5 @@ jobs:
           username: "root"
           password: ${{ secrets.PASSWORD }}
           script: |
-            docker run -d -p 8443:8443 --name backend-vendas --mount "type=bind,source=./uploads,target=/uploads" gregoriodev953/wdp_vendas_deploy:10
+            docker run -d -p 8443:8443 --mount "type=bind,source=./uploads,target=/uploads" gregoriodev953/wdp_vendas_deploy:10
             cd
