@@ -24,7 +24,7 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v6 #
         with:
           image: gregoriodev953/wdp_vendas_deploy
-          tags: 11
+          tags: 12
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -37,6 +37,6 @@ jobs:
           username: "root"
           password: ${{ secrets.PASSWORD }}
           script: |
-            docker stop f224eecaf93c
-            docker run -d -p 8443:8443 --mount "type=bind,source=./uploads,target=/uploads" gregoriodev953/wdp_vendas_deploy:11
+            docker stop d2799b121d03
+            docker run -d -p 8443:8443 --mount "type=bind,source=./uploads,target=/uploads" gregoriodev953/wdp_vendas_deploy:12
             cd

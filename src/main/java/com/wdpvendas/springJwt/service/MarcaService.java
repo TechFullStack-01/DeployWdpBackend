@@ -62,7 +62,7 @@ public class MarcaService {
         Files.write(filePath, imagem.getBytes());
 
         // Retorna o link HTTP para acessar a imagem
-        return serverUrl + "/" + fileName;
+        return serverUrl + "/uploads/imagensmarca/" + fileName;
     }
 
 
