@@ -24,7 +24,7 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v6 #
         with:
           image: gregoriodev953/wdp_vendas_deploy
-          tags: 13
+          tags: 14 # TEste de persistencia dos dados trocando o container
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -37,6 +37,6 @@ jobs:
           username: "root"
           password: ${{ secrets.PASSWORD }}
           script: |
-            docker stop 7504eeb7c726
-            docker run -d -p 8443:8443 --mount "type=bind,source=./uploads,target=/uploads" gregoriodev953/wdp_vendas_deploy:13
+            docker stop a1fde1dfdf27
+            docker run -d -p 8443:8443 --mount "type=bind,source=./uploads,target=/uploads" gregoriodev953/wdp_vendas_deploy:14
             cd
