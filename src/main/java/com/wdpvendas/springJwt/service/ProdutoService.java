@@ -68,7 +68,7 @@ public class ProdutoService {
         Files.write(filePath, imagem.getBytes());
 
         // Retorna o link HTTP para acessar a imagem
-        return serverUrl + "/" + fileName;
+        return serverUrl + "/uploads/imagens_produtos/" + fileName;
     }
 
     private void criarDiretorioUpload() {
