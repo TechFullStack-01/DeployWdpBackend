@@ -46,6 +46,7 @@ com\wdpvendas\springJwt\controller\MarcaController.class
 com\wdpvendas\springJwt\service\BannerService.class
 com\wdpvendas\springJwt\controller\UserController.class
 com\wdpvendas\springJwt\repository\DetalhesProdutoRepository.class
+com\wdpvendas\springJwt\CorsConfig.class
 com\wdpvendas\springJwt\repository\ImagemProdutoRepository.class
 com\wdpvendas\springJwt\repository\TamanhoRepository.class
 com\wdpvendas\springJwt\entity\Endereco.class
