@@ -69,7 +69,7 @@ public class SecurityConfig {
                                                                 .requestMatchers(HttpMethod.DELETE, "/api/usuarios/**")
                                                                 .hasAuthority("ADMIN")
                                                                 .requestMatchers(HttpMethod.GET, "/api/usuarios/**")
-                                                                .permitAll()
+                                                                .hasAuthority("ADMIN")
 
                                                                 .requestMatchers(HttpMethod.POST, "/api/categorias/**")
                                                                 .hasAuthority("ADMIN")
